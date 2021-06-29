@@ -3,13 +3,17 @@
 //
 
 import UIKit
+#if canImport(Combine)
 import Combine
+#endif
 
 open class ScrollView: UIScrollView, CompositeView, CombineBinding {
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +42,9 @@ open class CollectionView: UICollectionView, CompositeView, CombineBinding {
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -67,7 +73,9 @@ open class CollectionReusableView: UICollectionReusableView, CompositeView, Comb
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -81,7 +89,9 @@ open class CollectionReusableView: UICollectionReusableView, CompositeView, Comb
 
     open override func prepareForReuse() {
         super.prepareForReuse()
-        bag.removeAll()
+        if #available(iOS 13.0, *) {
+            bag.removeAll()
+        }
         bindPublishers()
     }
     
@@ -102,7 +112,9 @@ open class CollectionViewCell: UICollectionViewCell, CompositeView, CombineBindi
 
     open var targetView: UIView { contentView }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -116,7 +128,9 @@ open class CollectionViewCell: UICollectionViewCell, CompositeView, CombineBindi
     
     open override func prepareForReuse() {
         super.prepareForReuse()
-        bag.removeAll()
+        if #available(iOS 13.0, *) {
+            bag.removeAll()
+        }
         bindPublishers()
     }
 
@@ -137,7 +151,9 @@ open class TableView: UITableView, CompositeView, CombineBinding {
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -166,7 +182,9 @@ open class TableViewHeaderFooterView: UITableViewHeaderFooterView, CompositeView
 
     open var targetView: UIView { contentView }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -180,7 +198,9 @@ open class TableViewHeaderFooterView: UITableViewHeaderFooterView, CompositeView
     
     open override func prepareForReuse() {
         super.prepareForReuse()
-        bag.removeAll()
+        if #available(iOS 13.0, *) {
+            bag.removeAll()
+        }
         bindPublishers()
     }
 
@@ -201,7 +221,9 @@ open class TableViewCell: UITableViewCell, CompositeView, CombineBinding {
 
     open var targetView: UIView { contentView }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -215,7 +237,9 @@ open class TableViewCell: UITableViewCell, CompositeView, CombineBinding {
     
     open override func prepareForReuse() {
         super.prepareForReuse()
-        bag.removeAll()
+        if #available(iOS 13.0, *) {
+            bag.removeAll()
+        }
         bindPublishers()
     }
 
@@ -236,7 +260,9 @@ open class Control: UIControl, CompositeView, CombineBinding {
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -265,7 +291,9 @@ open class Button: UIButton, CompositeView, CombineBinding {
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -294,7 +322,9 @@ open class ImageView: UIImageView, CompositeView, CombineBinding {
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -335,7 +365,9 @@ open class Label: UILabel, CompositeView, CombineBinding {
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -364,7 +396,9 @@ open class TextView: UITextView, CompositeView, CombineBinding {
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -393,7 +427,9 @@ open class TextField: UITextField, CompositeView, CombineBinding {
 
     open var targetView: UIView { self }
     open var viewComposition: ViewBlock { EmptyBlock() }
-    public final var bag = Set<AnyCancellable>()
+
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -423,7 +459,8 @@ open class VisualEffectView: UIVisualEffectView, CompositeView, CombineBinding {
     open var targetView: UIView { contentView }
     open var viewComposition: ViewBlock { EmptyBlock() }
 
-    public final var bag = Set<AnyCancellable>()
+    @available(iOS 13.0, *)
+    public final lazy var bag = Set<AnyCancellable>()
 
     public override init(effect: UIVisualEffect?) {
         super.init(effect: effect)

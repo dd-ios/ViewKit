@@ -26,6 +26,6 @@ private final class SampleView: CoreView {
 
     let label: UILabel = ViewConvertible()
         .text("Hello")
-    let blur = VisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
+    let blur = VisualEffectView(effect: UIBlurEffect(style: .light))
 
 }

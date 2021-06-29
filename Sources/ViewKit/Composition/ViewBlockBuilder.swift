@@ -2,7 +2,7 @@
 //  ViewBlockBuilder.swift
 //
 
-@_functionBuilder
+@resultBuilder
 public struct ViewBlockBuilder {
 
     public static func buildBlock(_ children: ViewBlock...) -> [ViewBlock] { children }

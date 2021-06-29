@@ -2,17 +2,21 @@
 //  CombineBinding.swift
 //
 
+#if canImport(Combine)
 import Combine
+#endif
 
 /// A protocol, that provides convenience methods for classes to work with Combine's publishers.
 public protocol CombineBinding: AnyObject {
 
+    @available(iOS 13.0, *)
     var bag: Set<AnyCancellable> { get set }
 
     func bindPublishers()
 
 }
 
+@available(iOS 13.0, *)
 extension CombineBinding {
 
     /// Convenience binding method for a publisher that fails.
